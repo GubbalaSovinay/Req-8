@@ -1,0 +1,72 @@
+<template>
+  <div class="c-container">
+<lightning-layout vertical-align="stretch" multiple-rows="true" class="x-large">
+  <lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+
+    <div class="slds-box">
+
+        <div class="slds-grid slds-wrap headingTxt">
+
+            <div class="slds-col slds-size_2-of-6">
+              <span>Product Name</span>
+            </div>
+
+            <div class="slds-col slds-size_1-of-6">
+              <span>Product Sku</span>
+            </div>
+
+            <div class="slds-col slds-size_1-of-6">
+              <span>Quantity</span>
+            </div>
+
+            <div class="slds-col slds-size_1-of-6">
+              <span>Unit Price</span>
+            </div>
+
+            <div class="slds-col slds-size_1-of-6">
+              <span>Total Price</span>
+            </div>
+        </div>
+        <hr>
+        <template for:each={products} for:item="product">
+
+            <div class="slds-grid slds-wrap slds-m-bottom_small" key={product.Sku}>
+
+                <div class="slds-col slds-size_2-of-6">
+                  <span>{product.Name}</span>
+                </div>
+                <div class="slds-col slds-size_1-of-6">
+                  <template if:true={product.Sku}>
+
+                    <span>{product.Sku}</span>
+
+                  </template>
+
+                  <template if:false={product.Sku}>
+
+                    <span>{product.StockKeepingUnit}</span>
+                  </template>
+                </div>
+
+                <div class="slds-col slds-size_1-of-6">
+                  <span>{product.Quantity}</span>
+                </div>
+
+                <div class="slds-col slds-size_1-of-6">
+
+                  <lightning-formatted-number value={product.ListPrice} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-6">
+
+                  <lightning-formatted-number value={product.TotalPrice} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+
+                </div>
+            </div>
+        </template>
+    </div>
+  </lightning-layout-item>
+  </lightning-layout>
+</div>
+</template>
