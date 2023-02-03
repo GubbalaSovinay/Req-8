@@ -60,11 +60,8 @@ export default class ShippingAndBillingAddress extends LightningElement {
     this.getShippingAddressList();
     this.getBillingAddressList();
     //this.getShippingInstruction();
-    
-   
-    
+        
 }
-
   getShippingAddressList() {
         console.log(this.cartId);
         getShippingAddress({cartId : this.strRecordId })
@@ -129,14 +126,10 @@ export default class ShippingAndBillingAddress extends LightningElement {
     }
     handleChangeIsdefault(event){
             this.isDefault = event.target.value;
-
-
        }
     handleInstructions(event){
         this.instructions = event.target.value;
     }
-
-
     handleShippingAddress(event){
         this.selectedLabel = event.target.options.find(opt => opt.value === event.detail.value).label;
         //this.selectedValue = event.target.options.find(opt => opt.value === event.detail.value).value;
@@ -155,7 +148,6 @@ export default class ShippingAndBillingAddress extends LightningElement {
 
         })
 
-
     }
 
     handleBillingAddress(event){
@@ -172,10 +164,7 @@ export default class ShippingAndBillingAddress extends LightningElement {
             this.billingcountry=result.country;
             this.billingpostalCode = result.postalCode;
             console.log('ADDRESS :   '+this.billingstreet +','+this.billingcity+','+this.billingstate+','+this.billingcountry+','+this.billingpostalCode);
-
         })
-
-
     }
     defaultHandleShippingAddress(){
         console.log('Default Key :' + this.value);
@@ -187,11 +176,8 @@ export default class ShippingAndBillingAddress extends LightningElement {
             this.country=result.country;
             this.postalCode = result.postalCode;
             console.log('ADDRESS :   '+this.street +','+this.city+','+this.state+','+this.country+','+this.postalCode);
-
         })
-
     }
-
 
     defaultHandleBillingAddress(){
         console.log('Default Key :' + this.billingValue);
@@ -203,9 +189,7 @@ export default class ShippingAndBillingAddress extends LightningElement {
             this.billingcountry=result.country;
             this.billingpostalCode = result.postalCode;
             console.log('ADDRESS :   '+this.billingstreet +','+this.billingcity+','+this.billingstate+','+this.billingcountry+','+this.billingpostalCode);
-
         })
-
     }
 
    /* getShippingInstruction(){
@@ -221,11 +205,7 @@ export default class ShippingAndBillingAddress extends LightningElement {
             console.log(error);
         });
     }*/
-
-   
-      
-        
-    
+                
     handleChangeName(event){
         this.name=event.target.value;
     }
@@ -278,7 +258,6 @@ export default class ShippingAndBillingAddress extends LightningElement {
         
     }
     
-
     createAddress(){
         this.openModal = true;
     }
