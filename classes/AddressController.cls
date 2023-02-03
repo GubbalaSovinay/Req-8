@@ -8,10 +8,7 @@ public with sharing class AddressController {
             System.debug(add.getCity() + ' ' + c.Id);
         }
          */
-
-    }
-
-    
+    }  
     @AuraEnabled
     public static Map<Id,String> getShippingAddress(Id cartId){
         try {
@@ -72,10 +69,7 @@ public with sharing class AddressController {
             String postalCode = add.getPostalCode();*/
             system.debug(Map1);
             return Map1;
-
-            
-
-            
+                        
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
@@ -170,12 +164,8 @@ public with sharing class AddressController {
                 address2.Name = name;
                 address2.ParentId=accountId;
                 address2.AddressType='Shipping';
-
-
                 insert address2;
-                mssg = 'Inserted';
-
-                
+                mssg = 'Inserted';   
             }
             else if(name!=null && city != null && state != null && country != null && postalCode!=null && saveAddress == false)
             {
@@ -209,40 +199,22 @@ public with sharing class AddressController {
     }*/
 
     @AuraEnabled
-
     public static List<CartItem> getProductsData(String cartId){
 
         try {
-
             List<CartItem> cartItems = [SELECT  Name, Sku, Quantity ,ListPrice, TotalPrice FROM CartItem WHERE CartId=:cartId AND Sku!=null];
-
             return cartItems;
-
         } catch (Exception e) {
-
             throw new AuraHandledException(e.getMessage());
-
         }
-
     }
-
     @AuraEnabled
-
     public static List<OrderItemSummary> getProductsDataByOrderSummaryId(String orderSummaryId){
-
         try {
-
             List<OrderItemSummary> OSItems = [SELECT  Name, StockKeepingUnit, Quantity ,ListPrice, TotalPrice FROM OrderItemSummary WHERE OrderSummaryId=:orderSummaryId AND StockKeepingUnit!=null];
-
             return OSItems;
-
         } catch (Exception e) {
-
             throw new AuraHandledException(e.getMessage());
-
         }
-
     }
 }
-
-
